@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Wrapper from "./components/Wrapper";
 import Navbar from "./components/NavBar";
@@ -9,14 +8,15 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-const routs = {
+const routes = {
   "/": () => <Home />,
-  "/about": () => <About />,
-  "/contact/:uid": (uid) => <Contact uid={uid} />,
+  "/about*": () => <About />,
+  "/contact/:uid": ({uid}) => <Contact uid={uid} />,
 };
 
 function App() {
-  const match = useRoutes(routs);
+  const match = useRoutes(routes);
+
   return (
     <Wrapper>
       <Navbar />
